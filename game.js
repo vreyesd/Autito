@@ -8,12 +8,18 @@ var lastPress=null;
 function init()
 {
     canvas = document.getElementById("canvas");
-
+    window.addEventListener('resize', resizeCanvas, false);
     if (canvas.getContext)
     {
-       ctx = canvas.getContext("2d");
-       fittipaldi  = new Autito(80, 80);
-       run();
+        ctx = canvas.getContext("2d");
+        resizeCanvas();
+        fittipaldi  = new Autito(80, 80);
+        run();
+    }
+    function resizeCanvas(){
+        var head = document.getElementById('header').offsetHeight;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight-head;
     }
 }
 
